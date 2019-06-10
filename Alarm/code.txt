@@ -1,0 +1,13 @@
+1
+14:00
+Mo Tu We
+14:00
+Tu
+
+
+1, 14:00 Mo Tu We, 14:00 Tu
+
+//int count = 0;
+            //count = (Convert.ToByte(day) >> 0);
+            //count += count;
+            //Console.WriteLine(count);
