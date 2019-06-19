@@ -8,42 +8,51 @@ namespace Alarm.Tests
         [Fact]
         public void AlarmSetOnlyForDayToCheckShouldTriggerAlarm()
         {
-            const Program.Days days = Program.Days.Tu;
-            const Program.Days dayToCheck = Program.Days.Tu;
-            Assert.True(Program.CheckAlarmDay(days, dayToCheck));
+            const Days days = Days.Tu;
+            const Days dayToCheck = Days.Tu;
+            var actual = new Alert();
+            var alarmSet = actual.CheckAlarmDay(days, dayToCheck);
+            Assert.True(alarmSet);
         }
 
         [Fact]
         public void AlarmSetOnlyForDayDifferentThanTheOneToCheckShouldNotTriggerAlarm()
         {
-            const Program.Days days = Program.Days.Mo;
-            const Program.Days dayToCheck = Program.Days.Tu;
-            Assert.False(Program.CheckAlarmDay(days, dayToCheck));
+            const Days days = Days.Mo;
+            const Days dayToCheck = Days.Tu;
+            var actual = new Alert();
+            var alarmSet = actual.CheckAlarmDay(days, dayToCheck);
+            Assert.False(alarmSet);
         }
 
         [Fact]
         public void AlarmSetForMultipleDaysCheckAlarmForOneDayToTriggerAlarm()
         {
-            const Program.Days days = Program.Days.Tu | Program.Days.Mo | Program.Days.We;
-            const Program.Days dayToCheck = Program.Days.Tu;
-            Assert.True(Program.CheckAlarmDay(days, dayToCheck));
+            const Days days = Days.Tu | Days.Mo | Days.We;
+            const Days dayToCheck = Days.Tu;
+            var actual = new Alert();
+            var alarmSet = actual.CheckAlarmDay(days, dayToCheck);
+            Assert.True(alarmSet);
         }
 
         [Fact]
         public void AlarmSetForMultipleDaysCheckAlarmForOneDifferentThanDAysToCheckDayShouldNotToTriggerAlarm()
         {
-            const Program.Days days = Program.Days.Su | Program.Days.Sa | Program.Days.Mo;
-            const Program.Days dayToCheck = Program.Days.Tu;
-            Assert.False(Program.CheckAlarmDay(days, dayToCheck));
+            const Days days = Days.Su | Days.Sa | Days.Mo;
+            const Days dayToCheck = Days.Tu;
+            var actual = new Alert();
+            var alarmSet = actual.CheckAlarmDay(days, dayToCheck);
+            Assert.False(alarmSet);
         }
 
         [Fact]
-        public void AlarmSetForMultipleDaysCheckIfAlarmISAddedToTriggerPlan()
+        public void AlarmSetForMultipleDaysCheckIfAlarmIsAddedToTriggerPlan()
         {
-            const Program.Days days = Program.Days.Su | Program.Days.Sa | Program.Days.Mo;
-            var result = new Alert();
-            Program.AddDayToAlert(ref result, days);
-            Assert.Equal(days, result.Days);
+            const Days days = Days.Su | Days.Sa | Days.Mo;
+            var actual = new Alert();
+            var result = actual.AddDayToAlert(ref actual, days);
+
+            Assert.Equal(days, result);
         }
     }
 }

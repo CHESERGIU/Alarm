@@ -79,11 +79,21 @@ namespace Alarm
             }
         }
 
-        private static bool CheckAlarmDay(Days days, Days dayToCheck)
+        public bool CheckAlarmDay(Days daysWithAlarm, Days dayToCheck)
         {
-            return (days & dayToCheck) != 0;
+            return (daysWithAlarm & dayToCheck) != 0;
         }
 
-        private static void AddDayToAlert(ref Alert result, Days day) => result.days |= day;
+        public Days AddDayToAlert(ref Alert result, Days day)
+        {
+            if (result == null)
+            {
+                return days;
+            }
+
+            result.days |= day;
+
+            return result.days;
+        }
     }
 }
