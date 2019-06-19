@@ -1,0 +1,21 @@
+1
+14:00
+Mo Tu We
+14:00
+Tu
+
+2
+14:00 
+Mo Tu We
+17:20 
+We Th Fr
+14:00 
+Fr
+
+2
+14:00
+Mo Tu We
+17:20
+We Tu We
+14:00
+We

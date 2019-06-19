@@ -1,15 +1,38 @@
-﻿namespace Alarm
+﻿using System;
+
+namespace Alarm
 {
+    [Flags]
+    public enum Days
+    {
+        None = 0,
+        Su = 1,
+        Mo = 2,
+        Tu = 4,
+        We = 8,
+        Th = 16,
+        Fr = 32,
+        Sa = 64
+    }
+
     public class Time
     {
-        public Time(int hour, int minutes)
+        private readonly int hour;
+        private readonly int minutes;
+
+        public Time()
         {
-            Hour = hour;
-            Minutes = minutes;
         }
 
-        public int Hour { get; }
+        public Time(int hour, int minutes)
+        {
+            this.hour = hour;
+            this.minutes = minutes;
+        }
 
-        public int Minutes { get; }
+        public bool CheckAlarmTime(Time time, Time timeToCheck)
+        {
+            return timeToCheck != null && (time != null && (time.hour == timeToCheck.hour && time.minutes == timeToCheck.minutes));
+        }
     }
 }
